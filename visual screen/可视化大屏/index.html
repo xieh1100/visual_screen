@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>地图数据可视化</title>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./fonts/icomoon.css">
+    <link rel="stylesheet" href="./js/guiji.js">
+       
+        
+      
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a4f3e93635a434e7ab8b41d4fca7948a {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.2/leaflet.draw.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+
+<body>
+    <div class="viewport">
+        <div class="column">
+            <div class="overview panel">
+                <div class="inner">
+                    <div class="item">
+                        <h4>539438</h4>
+                        <span>
+                            <i class="icon-dot" style="color: #006cff"></i>
+                            轨迹点总数
+                        </span>
+                    </div>
+                    <div class="item">
+                        <h4>463974</h4>
+                        <span>
+                            <i class="icon-dot" style="color: #6acca3"></i>
+                            有效轨迹点
+                        </span>
+                    </div>
+                    <div class="item">
+                        <h4>61520</h4>
+                        <span>
+                            <i class="icon-dot" style="color: #6acca3"></i>
+                            连续轨迹点
+                        </span>
+                    </div>
+                    <div class="item">
+                        <h4>75464</h4>
+                        <span>
+                            <i class="icon-dot" style="color: #ed3f35"></i>
+                            异常轨迹点
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <!--监控-->
+            <div class="monitor panel">
+                <div class="inner">
+                    <div class="tabs">
+                        <a href="javascript:;" data-index="0" class="active">车辆基本信息</a>
+                    </div>
+                    <div class="content" style="display: block;">
+                        <div class="head">
+                            <span class="col">车辆ID</span>
+                            <span class="col">车辆型号</span>
+                            <span class="col">车辆经度</span>
+                            <span class="col">车辆纬度</span>
+                        </div>
+                        <div class="marquee-view">
+                            <div class="marquee">
+                                <div class="row">
+                                    <span class="col">198893</span>
+                                    <span class="col">21</span>
+                                    <span class="col">115.813959</span>
+                                    <span class="col">28.939216</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">199492</span>
+                                    <span class="col">31</span>
+                                    <span class="col">115.813896</span>
+                                    <span class="col">28.939303</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">199706</span>
+                                    <span class="col">32</span>
+                                    <span class="col">115.813942</span>
+                                    <span class="col">28.938902</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">198914</span>
+                                    <span class="col">32</span>
+                                    <span class="col">115.813688</span>
+                                    <span class="col">28.940533</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">198948</span>
+                                    <span class="col">33</span>
+                                    <span class="col">115.813684</span>
+                                    <span class="col">28.940353</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">199576</span>
+                                    <span class="col">32</span>
+                                    <span class="col">115.813858</span>
+                                    <span class="col">28.939166</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">199054</span>
+                                    <span class="col">22</span>
+                                    <span class="col">115.813745</span>
+                                    <span class="col">28.940377</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">198636</span>
+                                    <span class="col">62</span>
+                                    <span class="col">115.813742</span>
+                                    <span class="col">28.938932</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252509</span>
+                                    <span class="col">23</span>
+                                    <span class="col">115.809672</span>
+                                    <span class="col">28.961467</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252445</span>
+                                    <span class="col">22</span>
+                                    <span class="col">115.809573</span>
+                                    <span class="col">28.961672</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <div class="head">
+                            <span class="col">车辆ID</span>
+                            <span class="col">车辆型号</span>
+                            <span class="col">车辆经度</span>
+                            <span class="col">车辆纬度</span>
+                        </div>
+                        <div class="marquee-view">
+                            <div class="marquee">
+                                <div class="row">
+                                    <span class="col">252417</span>
+                                    <span class="col">23</span>
+                                    <span class="col">115.809573</span>
+                                    <span class="col">28.961819</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">251287</span>
+                                    <span class="col">63</span>
+                                    <span class="col">115.80969</span>
+                                    <span class="col">28.960905</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">250770</span>
+                                    <span class="col">61</span>
+                                    <span class="col">115.809116</span>
+                                    <span class="col">28.96244</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252486</span>
+                                    <span class="col">62</span>
+                                    <span class="col">115.808609</span>
+                                    <span class="col">28.964152</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252096</span>
+                                    <span class="col">62</span>
+                                    <span class="col">115.809058</span>
+                                    <span class="col">28.963015</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252036</span>
+                                    <span class="col">62</span>
+                                    <span class="col">115.808597</span>
+                                    <span class="col">28.96433</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252319</span>
+                                    <span class="col">63</span>
+                                    <span class="col">115.809083</span>
+                                    <span class="col">28.962648</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">252319</span>
+                                    <span class="col">63</span>
+                                    <span class="col">115.809083</span>
+                                    <span class="col">28.962648</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">251529</span>
+                                    <span class="col">63</span>
+                                    <span class="col">115.808811</span>
+                                    <span class="col">28.963418</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                                <div class="row">
+                                    <span class="col">251897</span>
+                                    <span class="col">63</span>
+                                    <span class="col">115.809169</span>
+                                    <span class="col">28.962543</span>
+                                    <span class="icon-dot"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--点位-->
+            <div class="point panel">
+                <div class="inner">
+                    <h3>车型分布统计</h3>
+                    <div class="chart">
+                        <div class="pie"></div>
+                        <div class="data">
+                            <div class="item">
+                                <h4>75464</h4>
+                                <span>
+                                    <i class="icon-dot" style="color: #ed3f35"></i>
+                                    车辆总数
+                                </span>
+                            </div>
+                            <div class="item">
+                                <h4>小型车</h4>
+                                <span>
+                                    <i class="icon-dot" style="color: #eacf19"></i>
+                                    占比最多车辆型号
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <!-- 地图 -->
+            <div class="map">
+                <h3>
+                    <span class="icon-cube"></span>
+                    轨迹跟踪界面
+                </h3>
+                <div class="chart">
+                    <div
+                    class="folium-map" id="map_a4f3e93635a434e7ab8b41d4fca7948a"  style="width:500px; height:360px; ">
+                    <script src="./js/guiji.js"></script>
+                    </div>
+                </div>
+            </div>
+            <!-- 用户 -->
+            <div class="users panel">
+                <div class="inner">
+                    <h3>车辆轨迹数分布</h3>
+                    <div class="chart">
+                        <div class="bar"></div>
+                        <div class="data">
+                            <div class="item">
+                                <span>
+                                    <i class="icon-dot" style="color: #ed3f35"></i>
+                                    x轴-轨迹点数
+                                </span>
+                            </div>
+                            <div class="item">
+                                <span>
+                                    <i class="icon-dot" style="color: #eacf19"></i>
+                                    y轴-对应车辆数
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="order panel">
+                <div class="inner">
+                    <!-- 筛选 -->
+                    <div class="filter">
+                        <a href="javascript:;" data-key="day365" class="active">365天</a>
+                        <a href="javascript:;" data-key="day90">90天</a>
+                        <a href="javascript:;" data-key="day30">30天</a>
+                        <a href="javascript:;" data-key="day1">24小时</a>
+                    </div>
+                    <!-- 数据 -->
+                    <div class="data">
+                        <div class="item">
+                            <h4>20,301,987</h4>
+                            <span>
+                                <i class="icon-dot" style="color: #ed3f35;"></i>
+                                平均小时车流量
+                            </span>
+                        </div>
+                        <div class="item">
+                            <h4>99834</h4>
+                            <span>
+                                <i class="icon-dot" style="color: #eacf19;"></i>
+                                有效轨迹点数
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 销售额 -->
+            <div class="sales panel">
+                <div class="inner">
+                    <div class="caption">
+                        <h3>补偿前后对比</h3>
+                    </div>
+                    <div class="chart">
+                        <div class="label">单位:%</div>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 渠道 季度 -->
+            <div class="wrap">
+                <div class="channel panel">
+                    <div class="inner">
+                        <h3>设备占比分布</h3>
+                        <div class="data">
+                            <div class="item">
+                                <h4>24 <small>%</small></h4>
+                                <span>
+                                    <i class="icon-dot"></i>
+                                    广播
+                                </span>
+                            </div>
+                            <div class="item">
+                                <h4>0 <small>%</small></h4>
+                                <span>
+                                    <i class="icon-dot"></i>
+                                    情报板
+                                </span>
+                            </div>
+                        </div>
+                        <div class="data">
+                            <div class="item">
+                                <h4>50 <small>%</small></h4>
+                                <span>
+                                    <i class="icon-dot"></i>
+                                    毫米波雷达
+                                </span>
+                            </div>
+                            <div class="item">
+                                <h4>36 <small>%</small></h4>
+                                <span>
+                                    <i class="icon-dot"></i>
+                                    摄像机
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quarter panel">
+                    <div class="inner">
+                        <h3>拼接成功率</h3>
+                        <div class="chart">
+                            <div class="box">
+                                <div class="gauge"></div>
+                                <div class="label">100<small> %</small></div>
+                            </div>
+                            <div class="data">
+                                <div class="item">
+                                    <h4>24</h4>
+                                    <span>
+                                        <i class="icomoon"></i>
+                                        超时目标
+                                    </span>
+                                </div>
+                                <div class="item">
+                                    <h4>24</h4>
+                                    <span>
+                                        <i class="icomoon"></i>
+                                        拼接成功目标
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 排行榜 -->
+            <div class="top panel">
+                <div class="inner">
+                    <div class="all">
+                        <h3>设备IP</h3>
+                        <ul>
+                            <li>
+                                <i class="icomoon" ></i>
+                                123.12.21.1
+                            </li>
+                            <li>
+                                <i class="icomoon" ></i>
+                                123.12.21.2
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                123.12.21.3
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                123.12.21.8
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="province">
+                        <h3>设备类型</h3>
+                        <ul>
+                            <li>
+                                <i class="icomoon" ></i>
+                                毫米波雷达
+                            </li>
+                            <li>
+                                <i class="icomoon" ></i>
+                                情报板
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                摄像头
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                广播
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pile">
+                        <h3>桩号</h3>
+                        <ul>
+                            <li>
+                                <i class="icomoon" ></i>
+                                4
+                            </li>
+                            <li>
+                                <i class="icomoon" ></i>
+                                0
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                3
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                2
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="state">
+                        <h3>设备状态</h3>
+                        <ul>
+                            <li>
+                                <i class="icomoon" ></i>
+                                在线
+                            </li>
+                            <li>
+                                <i class="icomoon" ></i>
+                                离线
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                在线
+                            </li>
+                            <li>
+                                <i class="icomoon"></i>
+                                在线
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="./js/jquery.min.js"></script>
+<script src="./js/echarts.min.js"></script>
+<script src="./js/index.js"></script>
+<!-- <script src="./js/china.js"></script>
+<script src="./js/mymap.js"></script> -->
+</html>
